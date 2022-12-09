@@ -1,0 +1,33 @@
+apiVersion: kubetruth.cloudtruth.com/v1
+kind: ProjectMapping
+metadata:
+  name: override-kubetruth-root
+  namespace: kubetruth
+spec:
+    scope: override
+    environment: default
+    project_selector: WhirlpoolConfiguration
+    context:
+      resource_name: frauddetection-service
+      resource_namespace: whirlpool
+    resource_templates:
+      configmap: |
+        {%- if parameters.size > 0 %}
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: "{{ context.resource_name }}"
+          namespace: "{{ context.resource_namespace }}"
+          labels:
+            version: "{{ parameters | sort | to_json | sha256 | slice: 0, 7 }}"
+          annotations:
+            kubetruth/project_heirarchy: |
+              {{ project_heirarchy | to_yaml | indent: 6 | lstrip }}
+            kubetruth/parameter_origins: |
+              {{ parameter_origins | to_yaml | indent: 6 | lstrip }}
+        data:
+          application.yaml: |
+            {%- for parameter in parameters %}
+            {{ parameter[0] | key_safe | stringify }}: {{ parameter[1] | stringify }}
+            {%- endfor %}
+        {%- endif %}

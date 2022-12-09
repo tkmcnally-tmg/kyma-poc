@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: whirlpool-sa
+      namespace: whirlpool
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: whirlpool-role
+      namespace: whirlpool
+    rules:
+      - apiGroups: [ "*" ]
+        resources: [ "*" ]
+        verbs: [ "*" ]
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: whirlpool-role
+      namespace: whirlpool
+    subjects:
+      - kind: ServiceAccount
+        name: whirlpool-sa
+        namespace: whirlpool
+    roleRef:
+      kind: Role
+      name: whirlpool-role
+      apiGroup: rbac.authorization.k8s.io
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: frauddetection-service
+      namespace: whirlpool
+      labels:
+        app: frauddetection-service
+    spec:
+      type: ClusterIP
+      ports:
+        - name: http
+          port: 8701
+          protocol: TCP
+          targetPort: 8701
+      selector:
+        app: frauddetection-service
+  - apiVersion: gateway.kyma-project.io/v1beta1
+    kind: APIRule
+    metadata:
+      name: frauddetection-service
+      namespace: whirlpool
+      labels:
+        app: frauddetection-service
+    spec:
+      host: frauddetection-service.c-53f2eb6.kyma.ondemand.com
+      service:
+        name: frauddetection-service
+        port: 8701
+      gateway: kyma-system/kyma-gateway
+      rules:
+        - path: /.*
+          methods: [ "GET","POST" ]
+          accessStrategies:
+            - handler: noop
+          mutators: [ ]
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      labels:
+        app: frauddetection-service
+      name: frauddetection-service
+      namespace: whirlpool
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: frauddetection-service
+      template:
+        metadata:
+          labels:
+            app: frauddetection-service
+        spec:
+          serviceAccountName: whirlpool-sa
+          containers:
+            - image: tkmcnally/spring-frauddetection-service:0.0.1-SNAPSHOT
+              name: frauddetection-service
+              env:
+              - name: JAVA_OPTS
+                value: -Dspring.config.location=/app/config/
+              envFrom:
+              - configMapRef:
+                  name: frauddetection-service
+              resources:
+                limits:
+                  cpu: 100m
+                  memory: 512Mi
+                requests:
+                  cpu: 50m
+                  memory: 64Mi
+              volumeMounts:
+              - name: configmap-volume
+                mountPath: /app/config
+          volumes:
+          - name: configmap-volume
+            configMap:
+              name: frauddetection-service

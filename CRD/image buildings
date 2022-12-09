@@ -1,5 +1,0 @@
-image buildings 
-
- ./mvnw spring-boot:build-image
-docker tag docker.io/library/spring-frauddetection-service:0.0.1-SNAPSHOT tkmcnally/spring-frauddetection-service:0.0.1-SNAPSHOT
-docker push tkmcnally/spring-frauddetection-service:0.0.1-SNAPSHOT
