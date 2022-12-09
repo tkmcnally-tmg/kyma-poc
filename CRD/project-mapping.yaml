@@ -1,0 +1,99 @@
+
+apiVersion: kubetruth.cloudtruth.com/v1
+kind: ProjectMapping
+metadata:
+  annotations:
+    meta.helm.sh/release-name: kubetruth-install
+    meta.helm.sh/release-namespace: demokubetruth
+  creationTimestamp: '2022-12-07T19:04:00Z'
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: kubetruth-install
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: kubetruth
+    app.kubernetes.io/version: 1.2.2
+    helm.sh/chart: kubetruth-1.2.2
+  managedFields:
+    - apiVersion: kubetruth.cloudtruth.com/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:meta.helm.sh/release-name': {}
+            'f:meta.helm.sh/release-namespace': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/managed-by': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/version': {}
+            'f:helm.sh/chart': {}
+        'f:spec':
+          .: {}
+          'f:context':
+            .: {}
+            'f:resource_name': {}
+            'f:resource_namespace': {}
+            'f:skip_secrets': {}
+          'f:environment': {}
+          'f:project_selector': {}
+          'f:resource_templates':
+            .: {}
+            'f:configmap': {}
+            'f:secret': {}
+          'f:scope': {}
+      manager: helm
+      operation: Update
+      time: '2022-12-07T19:04:00Z'
+  name: kubetruth-install-root
+  namespace: demokubetruth
+  resourceVersion: '6158465'
+  uid: 796c895b-8e0b-47f8-b464-bb66e6d38e03
+spec:
+  context:
+    resource_name: '{{ project | dns_safe }}'
+    resource_namespace: '{{ mapping_namespace }}'
+    skip_secrets: false
+  environment: default
+  project_selector: ^(?!kubetruth)
+  resource_templates:
+    configmap: |
+      {%- if parameters.size > 0 %}
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: "{{ context.resource_name }}"
+        namespace: "{{ context.resource_namespace }}"
+        labels:
+          version: "{{ parameters | sort | to_json | sha256 | slice: 0, 7 }}"
+        annotations:
+          kubetruth/project_heirarchy: |
+            {{ project_heirarchy | to_yaml | indent: 6 | lstrip }}
+          kubetruth/parameter_origins: |
+            {{ parameter_origins | to_yaml | indent: 6 | lstrip }}
+      data:
+        {%- for parameter in parameters %}
+        {{ parameter[0] | key_safe | stringify }}: {{ parameter[1] | stringify }}
+        {%- endfor %}
+      {%- endif %}
+    secret: |
+      {%- unless context.skip_secrets or secrets.size == 0 %}
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: "{{ context.resource_name }}"
+        namespace: "{{ context.resource_namespace }}"
+        labels:
+          version: "{{ secrets | sort | to_json | sha256 | slice: 0, 7 }}"
+        annotations:
+          kubetruth/project_heirarchy: |
+            {{ project_heirarchy | to_yaml | indent: 6 | lstrip }}
+          kubetruth/parameter_origins: |
+            {{ secret_origins | to_yaml | indent: 6 | lstrip }}
+      data:
+        {%- for secret in secrets %}
+        {{ secret[0] | key_safe | stringify }}: {{ secret[1] | encode64 | stringify }}
+        {%- endfor %}
+      {%- endunless %}
+  scope: root
