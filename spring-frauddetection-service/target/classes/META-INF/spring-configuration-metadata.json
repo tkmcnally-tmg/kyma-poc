@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "fraud",
+      "type": "com.whirlpool.frauddetectionservice.FraudDetectionSettings",
+      "sourceType": "com.whirlpool.frauddetectionservice.FraudDetectionSettings"
+    }
+  ],
+  "properties": [
+    {
+      "name": "fraud.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.whirlpool.frauddetectionservice.FraudDetectionSettings"
+    }
+  ],
+  "hints": []
+}

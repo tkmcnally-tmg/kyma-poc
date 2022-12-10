@@ -1,0 +1,15 @@
+server:
+  port: 8701
+
+spring:
+  cloud:
+    kubernetes:
+      config:
+        name: frauddetection-service
+        namespace: whirlpool
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
