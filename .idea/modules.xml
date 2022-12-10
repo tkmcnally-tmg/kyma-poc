@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/eureka-discovery-server/eureka-discovery-server.iml" filepath="$PROJECT_DIR$/eureka-discovery-server/eureka-discovery-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/kyma-poc.iml" filepath="$PROJECT_DIR$/.idea/kyma-poc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-config-server/spring-cloud-config-server.iml" filepath="$PROJECT_DIR$/spring-cloud-config-server/spring-cloud-config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-frauddetection-service/spring-frauddetection-service.iml" filepath="$PROJECT_DIR$/spring-frauddetection-service/spring-frauddetection-service.iml" />
+    </modules>
+  </component>
+</project>
