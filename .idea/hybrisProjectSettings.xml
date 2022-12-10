@@ -6,13 +6,13 @@
         <HybrisRemoteConnectionSettings>
           <option name="displayName" value="Local Hybris Instance" />
           <option name="url" value="https://localhost:9002" />
-          <option name="uuid" value="72d58f28-3d10-43d6-bebf-1b736b42c4cc" />
+          <option name="uuid" value="0519a1f3-c2f4-44c1-b142-3d657b776928" />
         </HybrisRemoteConnectionSettings>
         <HybrisRemoteConnectionSettings>
           <option name="displayName" value="Local Solr Instance" />
           <option name="serviceType" value="Solr" />
           <option name="url" value="https://localhost:8983/solr" />
-          <option name="uuid" value="690cb186-132d-402a-921e-10dbb151b472" />
+          <option name="uuid" value="1cd8961f-2ab9-4ffd-a96e-f73ee385d302" />
         </HybrisRemoteConnectionSettings>
       </list>
     </option>
