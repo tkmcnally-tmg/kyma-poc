@@ -8,7 +8,7 @@
 
 package com.whirlpool.frauddetectionservice.order.response;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 
 /**

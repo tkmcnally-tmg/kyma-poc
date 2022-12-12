@@ -1,14 +1,14 @@
 {
   "groups": [
     {
-      "name": "fraud",
+      "name": "",
       "type": "com.whirlpool.frauddetectionservice.FraudDetectionSettings",
       "sourceType": "com.whirlpool.frauddetectionservice.FraudDetectionSettings"
     }
   ],
   "properties": [
     {
-      "name": "fraud.enabled",
+      "name": "enabled",
       "type": "java.lang.Boolean",
       "sourceType": "com.whirlpool.frauddetectionservice.FraudDetectionSettings"
     }

@@ -1,28 +1,15 @@
 server:
   port: 8701
 
-#spring:
-#  application:
-#    name: frauddetectionservice
-#  cloud:
-#    config:
-#      service-port: 8702
-#      service-name: spring-cloud-config-server
-#    cluster:
-#      name: c-62e7ee0
-#    namespace: kyma
-
 spring:
   cloud:
     kubernetes:
       config:
-        name: kymatruth
-        namespace: kube-public
+        name: frauddetection-service
+        namespace: whirlpool
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-
-#spring.config.import: "optional:configserver:https://${spring.cloud.config.service-name}.${spring.cloud.cluster.name}.${spring.cloud.namespace}.ondemand.com"
