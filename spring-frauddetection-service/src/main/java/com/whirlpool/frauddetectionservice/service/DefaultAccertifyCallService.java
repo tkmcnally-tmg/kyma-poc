@@ -11,6 +11,7 @@ import okhttp3.Response;
 import org.apache.commons.net.util.Base64;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.http.*;
@@ -27,6 +28,7 @@ import ch.qos.logback.classic.Logger;
  */
 @ComponentScan("com.whirlpool")
 @Service
+@RefreshScope
 public class DefaultAccertifyCallService {
     private static final String SEPARATOR = ":";
 

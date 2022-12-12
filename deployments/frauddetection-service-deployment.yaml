@@ -92,11 +92,11 @@ items:
                   name: frauddetection-service
               resources:
                 limits:
-                  cpu: 100m
+                  cpu: 1000m
                   memory: 512Mi
                 requests:
-                  cpu: 50m
-                  memory: 64Mi
+                  cpu: 500m
+                  memory: 256Mi
               volumeMounts:
               - name: configmap-volume
                 mountPath: /app/config
