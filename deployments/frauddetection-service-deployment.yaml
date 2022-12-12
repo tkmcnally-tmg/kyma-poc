@@ -84,9 +84,6 @@ items:
           containers:
             - image: tkmcnally/spring-frauddetection-service:0.0.1-SNAPSHOT
               name: frauddetection-service
-              env:
-              - name: JAVA_OPTS
-                value: -Dspring.config.location=/app/config/
               envFrom:
               - configMapRef:
                   name: frauddetection-service
