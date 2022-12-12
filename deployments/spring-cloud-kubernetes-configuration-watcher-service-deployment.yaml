@@ -66,6 +66,9 @@ items:
           - name: spring-cloud-kubernetes-configuration-watcher
             image: springcloud/spring-cloud-kubernetes-configuration-watcher:2.0.1-SNAPSHOT
             imagePullPolicy: IfNotPresent
+            env:
+              - name: JAVA_OPTS
+                value: -Dlogging.level.org.springframework=TRACE
             readinessProbe:
               httpGet:
                 port: 8888

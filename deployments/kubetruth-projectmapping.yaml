@@ -19,6 +19,7 @@ spec:
           name: "{{ context.resource_name }}"
           namespace: "{{ context.resource_namespace }}"
           labels:
+            spring.cloud.kubernetes.config: "true"
             version: "{{ parameters | sort | to_json | sha256 | slice: 0, 7 }}"
           annotations:
             kubetruth/project_heirarchy: |

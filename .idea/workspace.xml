@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f004e5c9-6992-4221-86f1-2af8ba9a4475" name="Changes" comment="Updating deployment files.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deployments/frauddetection-service-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/deployments/frauddetection-service-deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-frauddetection-service/src/main/java/com/whirlpool/frauddetectionservice/service/DefaultAccertifyCallService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-frauddetection-service/src/main/java/com/whirlpool/frauddetectionservice/service/DefaultAccertifyCallService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deployments/kubetruth-projectmapping.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/deployments/kubetruth-projectmapping.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deployments/spring-cloud-kubernetes-configuration-watcher-service-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/deployments/spring-cloud-kubernetes-configuration-watcher-service-deployment.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +134,7 @@
       <workItem from="1670698257617" duration="108000" />
       <workItem from="1670698367314" duration="3333000" />
       <workItem from="1670701714460" duration="3968000" />
-      <workItem from="1670812938294" duration="17936000" />
+      <workItem from="1670812938294" duration="19648000" />
     </task>
     <task id="LOCAL-00001" summary="Updating deployment files.">
       <created>1670623825531</created>
@@ -157,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670872358602</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updating deployment files.">
+      <created>1670881535588</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670881535588</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
