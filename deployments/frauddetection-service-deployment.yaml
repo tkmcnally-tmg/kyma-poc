@@ -82,7 +82,7 @@ items:
         spec:
           serviceAccountName: whirlpool-sa
           containers:
-            - image: tkmcnally/spring-frauddetection-service:0.0.1-SNAPSHOT
+            - image: tkmcnally/spring-frauddetection-service:latest
               name: frauddetection-service
               envFrom:
               - configMapRef:

@@ -56,6 +56,8 @@ public class TransactionResults
 	protected String recommendationCode;
 	@XmlElement(required = true)
 	protected String remarks;
+	@XmlElement(required = false)
+	protected String rulesetId;
 
 	/**
 	 * Gets the value of the transactionId property.
@@ -193,6 +195,29 @@ public class TransactionResults
 	public void setRemarks(final String value)
 	{
 		this.remarks = value;
+	}
+
+	/**
+	 * Gets the value of the rulesetId property.
+	 *
+	 * @return possible object is {@link String }
+	 *
+	 */
+	public String getRulesetId()
+	{
+		return transactionId;
+	}
+
+	/**
+	 * Sets the value of the rulesetId property.
+	 *
+	 * @param value
+	 *           allowed object is {@link String }
+	 *
+	 */
+	public void setRulesetId(final String value)
+	{
+		this.transactionId = value;
 	}
 
 }
