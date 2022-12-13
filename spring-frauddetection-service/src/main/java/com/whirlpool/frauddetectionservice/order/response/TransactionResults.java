@@ -39,7 +39,7 @@ import jakarta.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder =
-{ "transactionId", "crossReference", "rulesTripped", "totalScore", "recommendationCode", "remarks" })
+{ "transactionId", "crossReference", "rulesTripped", "totalScore", "recommendationCode", "remarks", "rulesetId" })
 @XmlRootElement(name = "transaction-results")
 public class TransactionResults
 {
@@ -205,7 +205,7 @@ public class TransactionResults
 	 */
 	public String getRulesetId()
 	{
-		return transactionId;
+		return rulesetId;
 	}
 
 	/**
@@ -217,7 +217,7 @@ public class TransactionResults
 	 */
 	public void setRulesetId(final String value)
 	{
-		this.transactionId = value;
+		this.rulesetId = value;
 	}
 
 }

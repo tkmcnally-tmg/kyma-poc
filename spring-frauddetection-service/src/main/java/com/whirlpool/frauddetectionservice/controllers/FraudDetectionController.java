@@ -28,6 +28,7 @@ public class FraudDetectionController {
         StringReader reader = new StringReader(name);
         TransactionRequest transactionRequest = (TransactionRequest) unmarshaller.unmarshal(reader);
         ResponseEntity<TransactionResults> response = new ResponseEntity<>(defaultAccertifyCallService.callFraudCheckService(transactionRequest), HttpStatus.OK);
+        response.getBody().setRulesetId("kyma-ruleset-test");
         return response;
     }
 }
